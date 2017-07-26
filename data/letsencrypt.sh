@@ -1,10 +1,8 @@
 #!/bin/bash
 
 : ${CERTBOT_DOMAINS:-"/certbot.domains"}
-if [ -z "$(cat ${CERTBOT_DOMAINS})" ]; then
-  echo "nothing to do"
-  exit 0
-fi
+[ -f "${CERTBOT_DOMAINS}" ] || { echo "error: missing certbot.domains (${CERTBOT_DOMAINS})"; exit 0; }
+[ -z "$(cat ${CERTBOT_DOMAINS})" ] && { echo "nothing to do"; exit 0; }
 
 LE_CERT_ROOT="/etc/letsencrypt/live"
 LE_LIST=$(letsencrypt list | awk 'NR > 1 {print}')
