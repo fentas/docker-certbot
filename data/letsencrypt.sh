@@ -12,8 +12,8 @@ function .notInLeList { for needle in "${@}"; do
   if ! echo "${LE_LIST[@]}" | grep -q "${needle}"; then return 0; fi
 done; return 1; }
 
-while IFS= read -r -d '' line; do
-  [ -z "${line}" ] || [ "${line:0:1}" == "#" ] && continue
+while IFS='' read -r line || [[ -n "$line" ]]; do
+  [ "${line:0:1}" == "#" ] && continue
   read -a domains <<<$line
 
   for domain in "${domains[@]}"; do
