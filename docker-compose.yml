@@ -15,10 +15,10 @@ services:
     image: fentas/certbot:latest
     environment:
       - CERTBOT_DOMAINS=/run/secrets/certbot.domains
-      - LETSENCRYPT_STAGING=1
-      - LETSENCRYPT_CRON_TIME='@daily'
-      - LETSENCRYPT_RSA_KEY_SIZE=2048
-      - LETSENCRYPT_EMAIL='replace.me@example.com'
+      - LE_STAGING=1
+      - LE_CRON_TIME='@daily'
+      - LE_RSA_KEY_SIZE=2048
+      - LE_EMAIL='replace.me@example.com'
     volumes:
       - acme-webroot:/var/acme-webroot
       - certificates
