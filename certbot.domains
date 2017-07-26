@@ -1,0 +1,4 @@
+# Every row presents a SAN certificate
+#
+# E.g.: (max. 99 sub domains)
+#example.com blog.example.com news.example.com
